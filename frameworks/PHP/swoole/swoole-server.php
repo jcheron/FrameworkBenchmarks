@@ -116,13 +116,13 @@ $updates_postgres = function (int $queries = 0) use ($pool): string {
 
 	$arr = [];
 
-	$db->us ??= $db->prepare('SELECT randomnumber FROM World WHERE id = $1');
-	$db->uu ??= $db->prepare('UPDATE World SET randomnumber = $1 WHERE id = $2');
+	$db->us ??= $db->prepare('us', 'SELECT randomnumber FROM World WHERE id = $1');
+	$db->uu ??= $db->prepare('uu', 'UPDATE World SET randomnumber = $1 WHERE id = $2');
 
 	while ($query_count --) {
 		$id = mt_rand(1, 10000);
 		$randomNumber = mt_rand(1, 10000);
-		$res = $db->us->execute([
+		$res = $db->execute('us', [
 			$id
 		]);
 		$ret = $db->fetchAll($res);
@@ -132,7 +132,7 @@ $updates_postgres = function (int $queries = 0) use ($pool): string {
 			'randomnumber' => $ret[0]['randomnumber']
 		];
 		$world['randomnumber'] = $randomNumber;
-		$res = $db->uu->execute([
+		$res = $db->execute('uu', [
 			$randomNumber,
 			$id
 		]);
