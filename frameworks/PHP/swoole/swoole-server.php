@@ -116,8 +116,8 @@ $updates_postgres = function (int $queries = 0) use ($pool): string {
 
 	$arr = [];
 
-	$db->us ??= $db->prepare('us', 'SELECT randomnumber FROM World WHERE id = $1');
-	$db->uu ??= $db->prepare('uu', 'UPDATE World SET randomnumber = $1 WHERE id = $2');
+	$db->prepare('us', 'SELECT randomnumber FROM World WHERE id = $1');
+	$db->prepare('uu', 'UPDATE World SET randomnumber = $1 WHERE id = $2');
 
 	while ($query_count --) {
 		$id = mt_rand(1, 10000);
