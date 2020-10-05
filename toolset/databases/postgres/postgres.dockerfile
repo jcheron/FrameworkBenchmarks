@@ -1,4 +1,4 @@
-FROM buildpack-deps:bionic
+FROM buildpack-deps:focal
 
 ADD postgresql.conf postgresql.conf
 ADD pg_hba.conf pg_hba.conf
