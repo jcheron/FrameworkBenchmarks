@@ -22,9 +22,7 @@ ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
 # install postgresql on database machine
-RUN apt-get -yqq install -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" postgresql postgresql-contrib
-
-RUN sed -i "s|PG_VERSION|${PG_VERSION}|g" postgresql.conf
+RUN apt-get -yqq install -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" postgresql-12 postgresql-contrib-12
 
 # Make sure all the configuration files in main belong to postgres
 RUN mv postgresql.conf /etc/postgresql/${PG_VERSION}/main/postgresql.conf
