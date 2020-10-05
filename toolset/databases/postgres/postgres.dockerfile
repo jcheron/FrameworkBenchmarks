@@ -1,4 +1,4 @@
-FROM buildpack-deps:focal
+FROM buildpack-deps:bionic
 
 ADD postgresql.conf postgresql.conf
 ADD pg_hba.conf pg_hba.conf
@@ -8,8 +8,10 @@ ADD create-postgres.sql create-postgres.sql
 ADD pgdg.list pgdg.list
 
 # prepare PostgreSQL APT repository
-RUN cp pgdg.list /etc/apt/sources.list.d/
+#RUN cp pgdg.list /etc/apt/sources.list.d/
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
 
 RUN apt-get -yqq update > /dev/null
 RUN apt-get -yqq install locales
