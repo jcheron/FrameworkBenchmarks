@@ -16,7 +16,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release  -sc || cat 
 RUN apt-get -yqq update > /dev/null
 RUN apt-get -yqq install locales
 
-ENV PG_VERSION 13
+ENV PG_VERSION 12
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
