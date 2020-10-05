@@ -24,6 +24,8 @@ ENV DEBIAN_FRONTEND noninteractive
 # install postgresql on database machine
 RUN apt-get -yqq install -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" postgresql postgresql-contrib
 
+RUN sed -i "s|PG_VERSION|${PG_VERSION}|g" postgresql.conf
+
 # Make sure all the configuration files in main belong to postgres
 RUN mv postgresql.conf /etc/postgresql/${PG_VERSION}/main/postgresql.conf
 RUN mv pg_hba.conf /etc/postgresql/${PG_VERSION}/main/pg_hba.conf
