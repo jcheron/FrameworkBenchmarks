@@ -44,7 +44,7 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 
 	public function query($queries = 1) {
 		$worlds = [];
-		$count = $this->getCount($queries);
+		$count = \min(\max($queries, 1), 500);
 		while ($count --) {
 			self::$statement->execute([
 				\mt_rand(1, 10000)
