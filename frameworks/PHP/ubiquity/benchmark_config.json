@@ -179,6 +179,27 @@
         "notes": "",
         "versus": "php"
       },
+      "workerman-raw": {
+        "db_url": "/DbRaw",
+        "query_url": "/DbRaw/query/",
+        "fortune_url": "/FortunesRaw",
+        "update_url": "/DbRaw/update/",
+        "port": 8080,
+        "approach": "Realistic",
+        "classification": "Fullstack",
+        "database": "Postgres",
+        "framework": "Ubiquity",
+        "language": "PHP",
+        "flavor": "PHP7",
+        "orm": "raw",
+        "platform": "workerman",
+        "webserver": "nginx",
+        "os": "Linux",
+        "database_os": "Linux",
+        "display_name": "ubiquity-workerman-raw",
+        "notes": "",
+        "versus": "workerman"
+      },
       "ngx": {
         "json_url": "/Json_",
         "plaintext_url": "/Plaintext_",
