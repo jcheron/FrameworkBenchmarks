@@ -35,6 +35,6 @@ RUN chmod 777 -R /ubiquity/.ubiquity/*
 
 RUN echo "opcache.preload=/ubiquity/app/config/preloader.script.php" >> /etc/php/7.4/cli/php.ini
 
-COPY deploy/workerman/pgsql/raw/workerServices.php app/config/workerServices.php
+COPY deploy/conf/workerman/pgsql/raw/workerServices.php app/config/workerServices.php
 
 CMD /ubiquity/vendor/bin/Ubiquity serve -t=workerman -p=8080 -h=0.0.0.0
