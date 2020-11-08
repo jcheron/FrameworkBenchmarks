@@ -6,7 +6,7 @@ trait DbTrait {
 	private $counts = [];
 
 	public function getCount($queries) {
-		if ($this->counts[$queries]) {
+		if (isset($this->counts[$queries])) {
 			return $this->counts[$queries];
 		}
 		$count = 1;
