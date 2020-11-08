@@ -27,8 +27,6 @@ RUN wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
     make > /dev/null && make install > /dev/null
 
 
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
 RUN composer require phpmv/ubiquity-ngx:dev-master phpmv/ubiquity:dev-async-test --quiet
 
 RUN composer install --optimize-autoloader --classmap-authoritative --no-dev --quiet
