@@ -7,7 +7,7 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php > /dev/null
 RUN apt-get update -yqq > /dev/null && \
     apt-get install -yqq wget git unzip libxml2-dev cmake make systemtap-sdt-dev \
                     zlibc zlib1g zlib1g-dev libpcre3 libpcre3-dev libargon2-0-dev libsodium-dev \
-                    php7.4 php7.4-common php7.4-dev libphp7.4-embed php7.4-pgsql nginx > /dev/null
+                    php7.4 php7.4-common php7.4-dev libphp7.4-embed php7.4-pgsql nginx composer > /dev/null
 
 ADD ./ ./
 
@@ -26,7 +26,6 @@ RUN wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
             --add-module=/ngx_php7 > /dev/null && \
     make > /dev/null && make install > /dev/null
 
-RUN apt-get install -yqq composer > /dev/null
 
 RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
