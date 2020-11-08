@@ -27,7 +27,7 @@ RUN wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
     make > /dev/null && make install > /dev/null
 
 
-RUN composer require phpmv/ubiquity-ngx:dev-master phpmv/ubiquity:dev-async-test --quiet
+RUN composer require phpmv/ubiquity-ngx:dev-master phpmv/ubiquity:dev-async-test#e85bdcf8b03c27399c9e7eb80a47b9a2920d2613 --quiet
 
 RUN composer install --optimize-autoloader --classmap-authoritative --no-dev --quiet
 
