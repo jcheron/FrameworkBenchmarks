@@ -57,8 +57,8 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 	public function update($queries = 1) {
 		$worlds = [];
 		$keys = $values = [];
-		$count = $this->getCount($queries);
-		for ($i = 0; $i < $count; ++ $i) {
+		$count = $index = $this->getCount($queries);
+		while ($index --) {
 			$values[] = $keys[] = $id = \mt_rand(1, 10000);
 			self::$statement->execute([
 				$id
