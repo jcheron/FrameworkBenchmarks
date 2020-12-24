@@ -20,12 +20,6 @@ WORKDIR /ubiquity
 
 RUN chmod -R 777 /ubiquity
 
-RUN ["chmod", "+x", "deploy/run/install-composer.sh"]
-
-
-RUN apt-get update -yqq > /dev/null && \
-    apt-get install -yqq git unzip > /dev/null
-
 RUN composer require phpmv/ubiquity-devtools:dev-master phpmv/ubiquity-workerman:dev-master --quiet
 
 RUN composer install --optimize-autoloader --classmap-authoritative --no-dev --quiet
