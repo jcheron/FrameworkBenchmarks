@@ -44,7 +44,7 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 			]);
 			echo \json_encode(self::$statement->fetch());
 		}else{
-			echo \json_encode(['id'=>1,'randomNumer'=>10]);
+			echo \json_encode(['id'=>1,'randomNumber'=>10]);
 		}
 	}
 
