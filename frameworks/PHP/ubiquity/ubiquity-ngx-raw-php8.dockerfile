@@ -43,7 +43,7 @@ RUN echo "opcache.preload=/app/config/preloader.script.php" >> /deploy/conf/php.
 RUN export WORKERS=$(( 4 * $(nproc) )) && \
     sed -i "s|worker_processes  auto|worker_processes $WORKERS|g" /deploy/conf/ngx/nginx.conf
 
-RUN sed -i "s|php.ini|php-async-jit.ini|g" /deploy/conf/ngx/nginx.conf
+RUN sed -i "s|php\.ini|php-async-jit\.ini|g" /deploy/conf/ngx/nginx.conf
 
 EXPOSE 8080
 
