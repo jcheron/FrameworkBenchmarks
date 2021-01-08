@@ -17,6 +17,8 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 	 * @var \Ubiquity\db\Database
 	 */
 	protected static $db;
+	
+	private static $t;
 
 	private static function prepareUpdate(int $count) {
 		$sql = 'UPDATE World SET randomNumber = CASE id' . \str_repeat(' WHEN ?::INTEGER THEN ?::INTEGER ', $count) . 'END WHERE id IN (' . \str_repeat('?::INTEGER,', $count - 1) . '?::INTEGER)';
@@ -28,6 +30,7 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 	public static function warmup(\Ubiquity\db\Database $db) {
 		self::$db = $db;
 		self::$statement = $db->prepareStatement('SELECT id,randomNumber FROM World WHERE id=?');
+		self::$t=true;
 	}
 
 	public function initialize() {
@@ -35,10 +38,14 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 	}
 
 	public function index() {
-		self::$statement->execute([
-			\mt_rand(1, 10000)
-		]);
-		echo \json_encode(self::$statement->fetch());
+		if(self::$t===true){
+			self::$statement->execute([
+				\mt_rand(1, 10000)
+			]);
+			echo \json_encode(self::$statement->fetch());
+		}else{
+			echo \json_encode(['id'=>1,'randomNumer'=>10]);
+		}
 	}
 
 	public function query($queries = 1) {
