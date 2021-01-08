@@ -35,10 +35,10 @@ class DbRaw extends \Ubiquity\controllers\Controller {
 	}
 
 	public function index() {
-		/*self::$statement->execute([
+		self::$statement->execute([
 			\mt_rand(1, 10000)
-		]);*/
-		echo \json_encode(['id'=>1,'randomNumber'=>100]);
+		]);
+		echo \json_encode(self::$statement->fetch());
 	}
 
 	public function query($queries = 1) {
